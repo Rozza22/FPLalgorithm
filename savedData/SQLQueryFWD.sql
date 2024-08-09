@@ -1,6 +1,7 @@
 use FPL
-select * from GK_23_24_data 
-where round = 1
+select * from CombinedDataWithRolling
+where position != 'GK'
+and expectedGsConcededHistory != '0.0'
 --AND form != '0.0';
 --where player_ID = 17
 --order by round + 0 ASC;

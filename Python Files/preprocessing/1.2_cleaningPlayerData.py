@@ -52,7 +52,7 @@ if duplicates:
 else:
     print("No duplicate indices found.")
 
-playerData = playerData.drop(columns=['strength_overall_away','strength_defence_away','strength_attack_away','strength_overall_home','strength_defence_home','strength_attack_away', 'strength_attack_home', 'name','fixture','element', 'kickoff_time', 'selected', 'transfers_out', 'transfers_out', 'transfers_balance'])
+playerData = playerData.drop(columns=['draw','influence','threat','creativity','loss','played','points','win','strength_overall_away','strength_defence_away','strength_attack_away','strength_overall_home','strength_defence_home','strength_attack_away', 'strength_attack_home', 'name','fixture','element', 'kickoff_time', 'selected', 'transfers_out', 'transfers_out', 'transfers_in', 'transfers_balance'])
 
 # columns to drop in all positions
 playerData.to_csv('/home/ruairi/FPL model/savedData/CombinedData.csv', index=False)
