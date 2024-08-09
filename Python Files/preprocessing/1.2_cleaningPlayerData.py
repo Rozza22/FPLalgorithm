@@ -52,29 +52,8 @@ if duplicates:
 else:
     print("No duplicate indices found.")
 
-gkString = 'GK'
-fwdString = 'FWD'
-midString = 'MID'
-defString = 'DEF'
+playerData = playerData.drop(columns=['strength_overall_away','strength_defence_away','strength_attack_away','strength_overall_home','strength_defence_home','strength_attack_away', 'strength_attack_home', 'name','fixture','element', 'kickoff_time', 'selected', 'transfers_out', 'transfers_out', 'transfers_balance'])
 
-# Check if the 'position' column is correctly set
-# print(["Data type of 'position' column:", playerData.dtypes])
+# columns to drop in all positions
+playerData.to_csv('/home/ruairi/FPL model/savedData/CombinedData.csv', index=False)
 
-print(playerData.head())
-
-gkDF = playerData[playerData['position'].str.contains(gkString)]
-fwdDF = playerData[playerData['position'].str.contains(fwdString)]
-midDF = playerData[playerData['position'].str.contains(midString)]
-defDF = playerData[playerData['position'].str.contains(defString)]
-
-fwdDF = fwdDF.drop(columns=['strength_overall_away','strength_defence_away','strength_attack_away','strength_overall_home','strength_defence_home','strength_attack_away', 'name','fixture','element','kickoff_time', 'penalties_saved', 'saves', 'selected', 'transfers_out', 'transfers_out', 'transfers_balance', 'expected_goals_conceded'])
-midDF = midDF.drop(columns=['strength_overall_away','strength_defence_away','strength_attack_away','strength_overall_home','strength_defence_home','strength_attack_away','name','fixture','element','kickoff_time', 'penalties_saved', 'saves', 'selected', 'transfers_out', 'transfers_out', 'transfers_balance', 'expected_goals_conceded'])
-defDF = defDF.drop(columns=['strength_overall_away','strength_defence_away','strength_attack_away','strength_overall_home','strength_defence_home','strength_attack_away','name','fixture','element','kickoff_time', 'penalties_saved', 'saves', 'selected', 'transfers_out', 'transfers_out', 'transfers_balance', 'expected_goals_conceded'])
-
-gkDF = gkDF.drop(columns=['strength_overall_away','strength_defence_away','strength_attack_away','strength_overall_home','strength_defence_home','strength_attack_away','name','fixture', 'element', 'kickoff_time', 'selected', 'transfers_out', 'transfers_out', 'transfers_balance', 'expected_goals', 'expected_assists', 'expected_goal_involvements'])
-print(gkDF.head())
-
-fwdDF.to_csv('/home/ruairi/FPL model/savedData/byPosition/FWD_23_24_data.csv', index=False)
-midDF.to_csv('/home/ruairi/FPL model/savedData/byPosition/MID_23_24_data.csv', index=False)
-defDF.to_csv('/home/ruairi/FPL model/savedData/byPosition/DEF_23_24_data.csv', index=False)
-gkDF.to_csv('/home/ruairi/FPL model/savedData/byPosition/GK_23_24_data.csv', index=False)
